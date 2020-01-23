@@ -6,18 +6,16 @@ public class PropertyForSale extends Property {
 
     public String priceRatio;
 
-    public PropertyForSale(String street, String city, String size, String price, String priceRatio, String balconySize) {
-        this.location = Optional.ofNullable(street).map(str -> str + " ,").orElse("") + city;
-        this.size = size;
+    public PropertyForSale(String street,
+                           String city,
+                           String size,
+                           String price,
+                           String balconySize,
+                           String link,
+                           String roomNr,
+                           String priceRatio) {
+        super(street, city, size, price, balconySize, link, roomNr);
         this.priceRatio = priceRatio;
-        this.price = price;
-        this.street = street;
-        this.city = city;
-        if (balconySize == null) {
-            this.balconySize = "0";
-        } else {
-            this.balconySize = balconySize;
-        }
     }
 
     @Override

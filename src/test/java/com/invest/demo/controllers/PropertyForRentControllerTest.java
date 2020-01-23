@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import javax.annotation.Resource;
 
+import static com.invest.demo.controllers.PropertyForSaleControllerTest.asJsonString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,8 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PropertyForRentControllerTest {
 
-    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", "60", "66", "5");
-    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", "60", "66", "5");
+    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", "60", "66", "5", "5", "500 000");
+    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", "60", "66", "5", "5", "500 000");
 
     @Autowired
     private MockMvc mvc;
@@ -41,7 +42,7 @@ public class PropertyForRentControllerTest {
     @Test
     public void getPropertiesWhenEmpty() throws Exception {
         propertyForRentRepository.deleteAll();
-        mvc.perform(MockMvcRequestBuilders.get("/properties/Rent").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/properties/rent").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("[]")));
     }
@@ -59,8 +60,30 @@ public class PropertyForRentControllerTest {
 
     }
 
+    @Test
+    public void savePropertyBadFormat() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
+                .post("/properties/sale")
+                .content("{}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    public void savePropertySuccess() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
+                .post("/properties/sale")
+                .content(asJsonString(propertyForRent))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+    }
+
     private ResultActions sendRequestAndCheckMatch(PropertyForRent property) throws Exception {
-        return mvc.perform(MockMvcRequestBuilders.get("/properties/Rent").accept(MediaType.APPLICATION_JSON))
+        return mvc.perform(MockMvcRequestBuilders.get("/properties/rent").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(jsonPath("$[0].location", is(property.location)))
