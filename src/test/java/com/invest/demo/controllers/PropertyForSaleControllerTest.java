@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PropertyControllerTest {
+public class PropertyForSaleControllerTest {
 
     private PropertyForSale propertyForSale = new PropertyForSale("Elm street", "Szeged", "60", "66", "660000", "5");
     private PropertyForSale propertyWithSpecialChar = new PropertyForSale("Elm street", "Budaörs", "60", "66", "660000", "5");
