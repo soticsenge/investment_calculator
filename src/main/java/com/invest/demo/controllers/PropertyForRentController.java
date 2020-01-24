@@ -1,7 +1,6 @@
 package com.invest.demo.controllers;
 
 import com.invest.demo.entities.PropertyForRent;
-import com.invest.demo.entities.PropertyForRent;
 import com.invest.demo.repositories.PropertyForRentRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

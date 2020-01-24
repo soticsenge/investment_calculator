@@ -25,8 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PropertyForRentControllerTest {
 
-    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", "60", "66", "5", "5", "500 000");
-    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", "60", "66", "5", "5", "500 000");
+    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", 60.0, 66.0, "5", "5", "5");
+    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", 60.0, 66.0, "5", "5", "5");
 
     @Autowired
     private MockMvc mvc;
@@ -86,12 +86,12 @@ public class PropertyForRentControllerTest {
         return mvc.perform(MockMvcRequestBuilders.get("/properties/rent").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
-                .andExpect(jsonPath("$[0].location", is(property.location)))
-                .andExpect(jsonPath("$[0].city", is(property.city)))
-                .andExpect(jsonPath("$[0].street", is(property.street)))
-                .andExpect(jsonPath("$[0].price", is(property.price)))
-                .andExpect(jsonPath("$[0].size", is(property.size)))
-                .andExpect(jsonPath("$[0].balconySize", is(property.balconySize)));
+                .andExpect(jsonPath("$[0].location", is(property.getLocation())))
+                .andExpect(jsonPath("$[0].city", is(property.getCity())))
+                .andExpect(jsonPath("$[0].street", is(property.getStreet())))
+                .andExpect(jsonPath("$[0].price", is(property.getPrice())))
+                .andExpect(jsonPath("$[0].size", is(property.getSize())))
+                .andExpect(jsonPath("$[0].balconySize", is(property.getBalconySize())));
     }
 
 

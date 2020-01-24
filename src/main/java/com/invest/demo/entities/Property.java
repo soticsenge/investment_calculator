@@ -3,32 +3,35 @@ package com.invest.demo.entities;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 public abstract class Property {
 
     @Id
-    public String id;
+    protected String id;
 
     @NotEmpty(message = "Location cannot be empty.")
-    public String location;
+    protected String location;
 
-    @NotEmpty(message = "Size cannot be empty.")
-    public String size;
+    @NotNull(message = "Size cannot be empty.")
+    protected Double size;
 
-    @NotEmpty(message = "Price cannot be empty.")
-    public String price;
+    @NotNull(message = "Price cannot be empty.")
+    protected Double price;
 
-    public String balconySize;
-    public String link;
-    public String roomNr;
-    public String street;
-    public String city;
+    @NotEmpty(message = "Link cannot be empty.")
+    protected String link;
+
+    protected String balconySize;
+    protected String roomNr;
+    protected String street;
+    protected String city;
 
     protected Property(String street,
                        String city,
-                       String size,
-                       String price,
+                       Double size,
+                       Double price,
                        String balconySize,
                        String link,
                        String roomNr) {
@@ -44,5 +47,79 @@ public abstract class Property {
         } else {
             this.balconySize = balconySize;
         }
+    }
+
+    public abstract Double getPriceRatio();
+
+    public String getId() {
+        return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Double getSize() {
+        return size;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getBalconySize() {
+        return balconySize;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public String getRoomNr() {
+        return roomNr;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setSize(Double size) {
+        this.size = size;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setBalconySize(String balconySize) {
+        this.balconySize = balconySize;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setRoomNr(String roomNr) {
+        this.roomNr = roomNr;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

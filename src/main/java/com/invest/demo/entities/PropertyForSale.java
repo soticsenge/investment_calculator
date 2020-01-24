@@ -1,20 +1,26 @@
 package com.invest.demo.entities;
 
-import java.util.Optional;
-
 public class PropertyForSale extends Property {
 
-    public String priceRatio;
+    protected Double priceRatio;
 
     public PropertyForSale(String street,
                            String city,
-                           String size,
-                           String price,
+                           Double size,
+                           Double price,
                            String balconySize,
                            String link,
                            String roomNr,
-                           String priceRatio) {
+                           Double priceRatio) {
         super(street, city, size, price, balconySize, link, roomNr);
+        this.priceRatio = priceRatio;
+    }
+
+    public Double getPriceRatio() {
+        return priceRatio;
+    }
+
+    public void setPriceRatio(Double priceRatio) {
         this.priceRatio = priceRatio;
     }
 

@@ -1,13 +1,11 @@
 package com.invest.demo.entities;
 
-import java.util.Optional;
-
 public class PropertyForRent extends Property {
 
     public PropertyForRent(String street,
                            String city,
-                           String size,
-                           String price,
+                           Double size,
+                           Double price,
                            String balconySize,
                            String link,
                            String roomNr) {
@@ -19,5 +17,9 @@ public class PropertyForRent extends Property {
         return String.format(
                 "Customer[id=%s, location='%s', size='%s']",
                 id, location, size, price);
+    }
+
+    public Double getPriceRatio() {
+        return Double.valueOf(this.price) / Double.valueOf(this.size);
     }
 }

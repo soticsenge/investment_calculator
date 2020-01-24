@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface PropertyForSaleRepository extends MongoRepository<PropertyForSale, String> {
-
-    public Optional<PropertyForSale> findById(String id);
+public interface PropertyForSaleRepository extends MongoRepository<PropertyForSale, String>, CustomPropertyForSaleRepository {
+    public abstract Optional<PropertyForSale> findById(String id);
 }
