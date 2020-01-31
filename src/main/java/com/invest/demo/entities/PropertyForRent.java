@@ -6,10 +6,11 @@ public class PropertyForRent extends Property {
                            String city,
                            Double size,
                            Double price,
-                           String balconySize,
+                           Double balconySize,
                            String link,
                            String roomNr) {
         super(street, city, size, price, balconySize, link, roomNr);
+        this.priceRatio = price/(size + (balconySize/2));
     }
 
     @Override
@@ -17,9 +18,5 @@ public class PropertyForRent extends Property {
         return String.format(
                 "Customer[id=%s, location='%s', size='%s']",
                 id, location, size, price);
-    }
-
-    public Double getPriceRatio() {
-        return Double.valueOf(this.price) / Double.valueOf(this.size);
     }
 }

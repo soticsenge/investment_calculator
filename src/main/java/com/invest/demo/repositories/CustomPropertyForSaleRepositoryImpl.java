@@ -15,7 +15,7 @@ public class CustomPropertyForSaleRepositoryImpl implements CustomPropertyForSal
     MongoTemplate mongoTemplate;
 
     @Override
-    public Map<String, List<PropertyForSale>> getGroupedProperties() {
+    public Map<String, List<PropertyForSale>> getGroupedPropertiesByCity() {
         return mongoTemplate.findAll(PropertyForSale.class).stream().collect(groupingBy(PropertyForSale::getCity));
     }
 }

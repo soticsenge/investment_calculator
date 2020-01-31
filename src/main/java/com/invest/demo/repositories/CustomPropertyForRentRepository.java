@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface CustomPropertyForRentRepository {
-    public Map<String, List<PropertyForRent>> getGroupedProperties();
+    public Map<String, List<PropertyForRent>> getGroupedPropertiesByCity();
 }

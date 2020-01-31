@@ -25,8 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PropertyForRentControllerTest {
 
-    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", 60.0, 66.0, "5", "5", "5");
-    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", 60.0, 66.0, "5", "5", "5");
+    private PropertyForRent propertyForRent = new PropertyForRent("Elm street", "Szeged", 60.0, 66.0, 5.0, "5", "5");
+    private PropertyForRent propertyWithSpecialChar = new PropertyForRent("Elm street", "Budaörs", 60.0, 66.0, 5.0, "5", "5");
 
     @Autowired
     private MockMvc mvc;

@@ -23,16 +23,26 @@ public abstract class Property {
     @NotEmpty(message = "Link cannot be empty.")
     protected String link;
 
-    protected String balconySize;
+    protected Double balconySize;
     protected String roomNr;
     protected String street;
     protected String city;
+
+    public Double getPriceRatio() {
+        return priceRatio;
+    }
+
+    public void setPriceRatio(Double priceRatio) {
+        this.priceRatio = priceRatio;
+    }
+
+    protected Double priceRatio;
 
     protected Property(String street,
                        String city,
                        Double size,
                        Double price,
-                       String balconySize,
+                       Double balconySize,
                        String link,
                        String roomNr) {
         this.location = Optional.ofNullable(street).map(str -> str + " ,").orElse("") + city;
@@ -43,13 +53,11 @@ public abstract class Property {
         this.roomNr = roomNr;
         this.city = city;
         if (balconySize == null) {
-            this.balconySize = "0";
+            this.balconySize = 0.0;
         } else {
             this.balconySize = balconySize;
         }
     }
-
-    public abstract Double getPriceRatio();
 
     public String getId() {
         return id;
@@ -67,7 +75,7 @@ public abstract class Property {
         return price;
     }
 
-    public String getBalconySize() {
+    public Double getBalconySize() {
         return balconySize;
     }
 
@@ -103,7 +111,7 @@ public abstract class Property {
         this.price = price;
     }
 
-    public void setBalconySize(String balconySize) {
+    public void setBalconySize(Double balconySize) {
         this.balconySize = balconySize;
     }
 

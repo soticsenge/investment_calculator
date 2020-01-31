@@ -1,11 +1,23 @@
 package com.invest.demo.entities;
 
 public class InvestmentData {
-    private String city;
-    private Double ratio;
+    private String locationOsmCode;
 
+    private String locationString;
+
+    private Double ratio;
+    private Double averageRentPrice;
+    private Double averageSalePrice;
     public Double getAverageRentPrice() {
         return averageRentPrice;
+    }
+
+    public InvestmentData(String locationOsmCode, Double averageSalePrice, Double averageRentPrice, String locationString) {
+        this.locationOsmCode = locationOsmCode;
+        this.locationString = locationString;
+        this.averageSalePrice = averageSalePrice;
+        this.averageRentPrice = averageRentPrice;
+        this.ratio = averageRentPrice/averageSalePrice;
     }
 
     public void setAverageRentPrice(Double averageRentPrice) {
@@ -20,22 +32,20 @@ public class InvestmentData {
         this.averageSalePrice = averageSalePrice;
     }
 
-    private Double averageRentPrice;
-    private Double averageSalePrice;
-
-    public InvestmentData(String city, Double averageSalePrice, Double averageRentPrice) {
-        this.city = city;
-        this.averageSalePrice = averageSalePrice;
-        this.averageRentPrice = averageRentPrice;
-        this.ratio = averageRentPrice/averageSalePrice;
+    public String getLocationString() {
+        return locationString;
     }
 
-    public String getCity() {
-        return city;
+    public void setLocationString(String locationString) {
+        this.locationString = locationString;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getLocationOsmCode() {
+        return locationOsmCode;
+    }
+
+    public void setLocationOsmCode(String locationOsmCode) {
+        this.locationOsmCode = locationOsmCode;
     }
 
     public Double getRatio() {
@@ -49,7 +59,8 @@ public class InvestmentData {
     @Override
     public String toString() {
         return "InvestmentData{" +
-                "city='" + city + '\'' +
+                "locationOsmCode='" + locationOsmCode + '\'' +
+                "locationString='" + locationString + '\'' +
                 ", ratio=" + ratio +
                 ", averageRentPrice=" + averageRentPrice +
                 ", averageSalePrice=" + averageSalePrice +

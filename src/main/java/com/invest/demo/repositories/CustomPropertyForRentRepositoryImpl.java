@@ -15,7 +15,7 @@ public class CustomPropertyForRentRepositoryImpl implements CustomPropertyForRen
     MongoTemplate mongoTemplate;
 
     @Override
-    public Map<String, List<PropertyForRent>> getGroupedProperties() {
+    public Map<String, List<PropertyForRent>> getGroupedPropertiesByCity() {
         return mongoTemplate.findAll(PropertyForRent.class).stream().collect(groupingBy(PropertyForRent::getCity));
     }
 }
