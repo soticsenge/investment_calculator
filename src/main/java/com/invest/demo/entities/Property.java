@@ -28,6 +28,8 @@ public abstract class Property {
     protected String street;
     protected String city;
 
+    protected String imgUrl;
+
     public Double getPriceRatio() {
         return priceRatio;
     }
@@ -44,7 +46,8 @@ public abstract class Property {
                        Double price,
                        Double balconySize,
                        String link,
-                       String roomNr) {
+                       String roomNr,
+                       String imgUrl) {
         this.location = Optional.ofNullable(street).map(str -> str + " ,").orElse("") + city;
         this.size = size;
         this.price = price;
@@ -52,6 +55,7 @@ public abstract class Property {
         this.link = link;
         this.roomNr = roomNr;
         this.city = city;
+        this.imgUrl = imgUrl;
         if (balconySize == null) {
             this.balconySize = 0.0;
         } else {
@@ -65,6 +69,14 @@ public abstract class Property {
 
     public String getLocation() {
         return location;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Double getSize() {

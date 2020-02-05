@@ -9,8 +9,9 @@ public class PropertyForSale extends Property {
                            Double balconySize,
                            String link,
                            String roomNr,
-                           Double priceRatio) {
-        super(street, city, size, price, balconySize, link, roomNr);
+                           Double priceRatio,
+                           String imgUrl) {
+        super(street, city, size, price, balconySize, link, roomNr, imgUrl);
         this.priceRatio = priceRatio;
     }
 

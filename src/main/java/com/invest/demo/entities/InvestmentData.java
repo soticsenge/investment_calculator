@@ -1,7 +1,6 @@
 package com.invest.demo.entities;
 
 public class InvestmentData {
-    private String locationOsmCode;
 
     private String locationString;
 
@@ -12,8 +11,7 @@ public class InvestmentData {
         return averageRentPrice;
     }
 
-    public InvestmentData(String locationOsmCode, Double averageSalePrice, Double averageRentPrice, String locationString) {
-        this.locationOsmCode = locationOsmCode;
+    public InvestmentData(Double averageSalePrice, Double averageRentPrice, String locationString) {
         this.locationString = locationString;
         this.averageSalePrice = averageSalePrice;
         this.averageRentPrice = averageRentPrice;
@@ -40,13 +38,6 @@ public class InvestmentData {
         this.locationString = locationString;
     }
 
-    public String getLocationOsmCode() {
-        return locationOsmCode;
-    }
-
-    public void setLocationOsmCode(String locationOsmCode) {
-        this.locationOsmCode = locationOsmCode;
-    }
 
     public Double getRatio() {
         return ratio;
@@ -59,7 +50,6 @@ public class InvestmentData {
     @Override
     public String toString() {
         return "InvestmentData{" +
-                "locationOsmCode='" + locationOsmCode + '\'' +
                 "locationString='" + locationString + '\'' +
                 ", ratio=" + ratio +
                 ", averageRentPrice=" + averageRentPrice +

@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface PropertyForRentRepository extends MongoRepository<PropertyForRent, String>, CustomPropertyForRentRepository {
 
     public abstract Optional<PropertyForRent> findById(String id);
+    public abstract Optional<PropertyForRent> findByCity(String city);
 }

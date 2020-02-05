@@ -8,8 +8,9 @@ public class PropertyForRent extends Property {
                            Double price,
                            Double balconySize,
                            String link,
-                           String roomNr) {
-        super(street, city, size, price, balconySize, link, roomNr);
+                           String roomNr,
+                           String imgUrl) {
+        super(street, city, size, price, balconySize, link, roomNr, imgUrl);
         this.priceRatio = price/(size + (balconySize/2));
     }
 

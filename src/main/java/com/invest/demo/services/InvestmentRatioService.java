@@ -8,6 +8,7 @@ import com.invest.demo.repositories.PropertyForSaleRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -57,9 +58,8 @@ public class InvestmentRatioService {
                 .stream()
                 .map(entry ->
                         new InvestmentData(
-                                cityName_osmID.get(entry.getKey()),
                                 getAveragePriceRatio(entry.getValue()),
-                                getAveragePriceRatio(groupedPropertiesForRent.get(entry.getKey())),
+                                getAveragePriceRatio(groupedPropertiesForRent.getOrDefault(entry.getKey(), new ArrayList<>())),
                                 entry.getKey())
                 )
                 .sorted(Comparator.comparing(InvestmentData::getRatio))
